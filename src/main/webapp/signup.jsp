@@ -12,6 +12,7 @@
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+    <script src="js/validator.min.js"></script>
 </head>
 <body>
 
@@ -19,7 +20,7 @@
     <div class="row clearfix">
         <div class="col-md-6 col-md-offset-3">
             <div style="background-color: #3da6ff; color: white; font-size: 3em">Sign Up</div>
-            <form class="form-horizontal" role="form" style="margin-top: 20px">
+            <form class="form-horizontal" data-toggle="validator" role="form" style="margin-top: 20px">
                 <div class="form-group">
                     <label for="username" class="col-sm-3 control-label">User Name</label>
                     <div class="col-sm-9">
@@ -27,9 +28,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+                    <label for="inputEmail" class="col-sm-3 control-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="email" class="form-control" id="inputEmail3"/>
+                        <input type="email" class="form-control" id="inputEmail" data-error="The Email address is not valid."/>
+                        <div class="help-block with-errors"></div>
                     </div>
                 </div>
 
@@ -42,7 +44,9 @@
                 <div class="form-group">
                     <label for="passwd-confirm" class="col-sm-3 control-label">Confirm Password</label>
                     <div class="col-sm-9">
-                        <input type="password" class="form-control" id="passwd-confirm"/>
+                        <input type="password" class="form-control" id="passwd-confirm" data-match="#inputPassword3"
+                        data-match-error="Passwords are not match!"/>
+                        <div class="help-block with-errors"></div>
                     </div>
                 </div>
                 <div class="form-group">
