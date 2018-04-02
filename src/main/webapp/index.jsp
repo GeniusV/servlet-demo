@@ -97,8 +97,8 @@
         <div id="headright" class="col-lg-4" style="margin-top: 30px">
             <a href="#">登录</a>|
             <a href="./signup.jsp">注册</a><br/>
-            <a href="#">
-                <img alt="" src="./image/cart.png">
+            <a href="./cart.jsp">
+                <img alt="" src="./image/cart.png"  >
             </a>
         </div>
     </div>
