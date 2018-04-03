@@ -9,6 +9,13 @@ public class User {
     private String email;
     private String tel;
 
+    public User(String useName, String pwd, String email, String tel) {
+        this.useName = useName;
+        this.pwd = pwd;
+        this.email = email;
+        this.tel = tel;
+    }
+
     public String getUseName() {
         return useName;
     }

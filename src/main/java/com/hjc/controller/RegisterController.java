@@ -1,5 +1,7 @@
 package com.hjc.controller;
 
+import com.hjc.entity.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +23,14 @@ public class RegisterController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        String name = req.getParameter("usename");
+        String email = req.getParameter("inputEmail");
+        String passsword = req.getParameter("inputPassword3");
+        String tel = req.getParameter("phone");
+
+        User user = new User(name, passsword, email, tel);
+
+
     }
 
 
