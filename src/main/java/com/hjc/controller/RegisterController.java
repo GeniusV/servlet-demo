@@ -9,10 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  * Created by GeniusV on 3/27/18.
@@ -38,8 +35,9 @@ public class RegisterController extends HttpServlet {
         try{
             Connection conn = DataSource.getInstance().getConnection();
             String sql = "select * from user where user name = ?";
-            Statement statement = conn.prepareStatement(sql);
-
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setObject(1, name);
+            ResultSet set = statement.getResultSet();
 
         } catch (SQLException e) {
             e.printStackTrace();
