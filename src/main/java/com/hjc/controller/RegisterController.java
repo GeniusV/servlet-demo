@@ -1,7 +1,7 @@
 package com.hjc.controller;
 
 import com.hjc.entity.User;
-import com.hjc.util.DBHelp;
+import com.hjc.service.UsersService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,10 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.io.PrintWriter;
 
 /**
  * Created by GeniusV on 3/27/18.
@@ -28,22 +25,25 @@ public class RegisterController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("usename");
+        String name = req.getParameter("username");
         String email = req.getParameter("inputEmail");
         String passsword = req.getParameter("inputPassword3");
         String tel = req.getParameter("phone");
 
         User user = new User(name, passsword, email, tel);
 
-        try {
-            Connection conn = DBHelp.getCon();
-            String sql = "select * from user where user name = ?";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setObject(1, name);
-            ResultSet set = statement.getResultSet();
+        UsersService usersService = new UsersService();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (usersService.checkUsernameValid(user)) {
+            usersService.registerWriteDB(user);
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        } else {
+            resp.addHeader("refresh", "5;url=\"signup.jsp\"");
+            resp.setCharacterEncoding("utf-8");
+            resp.setContentType("text/html");
+            PrintWriter out = resp.getWriter();
+            out.print("User name already exists, please choose a new one. If not junp in 5 seconds, please click" +
+                    "<a href=\"signup.jsp\">Sign Up</a>");
         }
 
     }
