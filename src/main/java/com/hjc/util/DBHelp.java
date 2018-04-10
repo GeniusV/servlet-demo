@@ -7,10 +7,10 @@ public class DBHelp {
 
 	public static Connection getCon() {
 
-		String DBDirverName = "";
-		String DBUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=shopping";
-		String DBUser = "sa";
-		String DBPwd = "123";
+		String DBDirverName = "com.mysql.jdbc.Driver";
+		String DBUrl = "jdbc:mysql://localhost:3306/javaee";
+		String DBUser = "root";
+		String DBPwd = "123456";
 		Connection connection = null;
 		try {
 			Class.forName(DBDirverName);
