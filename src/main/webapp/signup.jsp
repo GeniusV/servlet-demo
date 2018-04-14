@@ -20,17 +20,17 @@
     <div class="row clearfix">
         <div class="col-md-6 col-md-offset-3">
             <div style="background-color: #3da6ff; color: white; font-size: 3em">Sign Up</div>
-            <form class="form-horizontal" data-toggle="validator" role="form" style="margin-top: 20px">
+            <form class="form-horizontal" method="post" action="/signup" data-toggle="validator" role="form" style="margin-top: 20px">
                 <div class="form-group">
                     <label for="username" class="col-sm-3 control-label">User Name</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="username"/>
+                        <input type="text" class="form-control" id="username" name="username"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail" class="col-sm-3 control-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="email" class="form-control" id="inputEmail" data-error="The Email address is not valid."/>
+                        <input type="email" class="form-control" id="inputEmail" data-error="The Email address is not valid." name="inputEmail"/>
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
                     <div class="col-sm-9">
-                        <input type="password" class="form-control" id="inputPassword3"/>
+                        <input type="password" class="form-control" id="inputPassword3" name="inputPassword3"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -52,7 +52,7 @@
                 <div class="form-group">
                     <label for="phone" class="col-sm-3 control-label">Phone</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="phone"/>
+                        <input type="text" class="form-control" id="phone" name="phone"/>
                     </div>
                 </div>
 
