@@ -25,6 +25,7 @@ public class RegisterController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
         String name = req.getParameter("username");
         String email = req.getParameter("inputEmail");
         String passsword = req.getParameter("inputPassword3");
@@ -36,7 +37,8 @@ public class RegisterController extends HttpServlet {
 
         if (usersService.checkUsernameValid(user)) {
             usersService.registerWriteDB(user);
-            req.getRequestDispatcher("index.jsp").forward(req, resp);
+            req.getSession().setAttribute("user", user);
+            resp.sendRedirect("index.jsp");
         } else {
             resp.addHeader("refresh", "5;url=\"signup.jsp\"");
             resp.setCharacterEncoding("utf-8");

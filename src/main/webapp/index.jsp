@@ -1,3 +1,4 @@
+<%@ page import="com.hjc.entity.User" %>
 <%@ page language="java" pageEncoding="utf-8" %>
 <%
     String path = request.getContextPath();
@@ -95,11 +96,18 @@
             </form>
         </div>
         <div id="headright" class="col-lg-4" style="margin-top: 30px">
+
+            <%if (session.getAttribute("user") != null) {
+            User user = (User) session.getAttribute("user");%>
+            <p>welcome <%= user.getUseName()%></p>
+            <a href="/logout"><button type="button" class="btn btn-default">Logout</button></a>
+            <%} else { %>
             <a href="#">登录</a>|
             <a href="./signup.jsp">注册</a><br/>
             <a href="./cart.jsp">
                 <img alt="" src="./image/cart.png"  >
             </a>
+            <%}%>
         </div>
     </div>
 
