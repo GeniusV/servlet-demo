@@ -12,43 +12,31 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Created by GeniusV on 3/27/18.
+ * Created by GeniusV on 4/24/18.
  */
-
-@WebServlet(name = "registerServlet", urlPatterns = "/signup")
-public class RegisterController extends HttpServlet {
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
-    }
-
+@WebServlet(name = "LoginServlet", urlPatterns = "/signin")
+public class LoginController extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
         String name = req.getParameter("username");
-        String email = req.getParameter("inputEmail");
-        String passsword = req.getParameter("inputPassword3");
-        String tel = req.getParameter("phone");
+        String password = req.getParameter("inputPassword3");
 
-        User user = new User(name, passsword, email, tel);
+        User user = new User(name, password);
 
         UsersService usersService = new UsersService();
 
-        if (usersService.checkUsernameValid(user)) {
-            usersService.registerWriteDB(user);
+        if (usersService.checkUserValid(user)) {
             req.getSession().setAttribute("user", user);
             resp.sendRedirect("index.jsp");
-        } else {
+        }
+        else {
             resp.addHeader("refresh", "5;url=\"signup.jsp\"");
             resp.setCharacterEncoding("utf-8");
             resp.setContentType("text/html");
             PrintWriter out = resp.getWriter();
-            out.print("User name already exists, please choose a new one. If not junp in 5 seconds, please click" +
-                    "<a href=\"signup.jsp\">Sign Up</a>");
+            out.print("Username or error error. Please check your user name and password and try again. If not junp in 5 seconds, please click" +
+                    "<a href=\"signin.jsp\">Sign In</a>");
         }
-
     }
-
-
 }
