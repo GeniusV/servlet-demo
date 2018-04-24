@@ -30,6 +30,26 @@ public class UsersService {
         return true;
     }
 
+    public boolean checkUserValid(User user) {
+        Connection conn = DBHelp.getCon();
+        String sql = "select * from User where username=? AND password=?";
+        ResultSet rs = null;
+        PreparedStatement stm = null;
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setString(1, user.getUseName());
+            stm.setString(2, user.getPwd());
+            rs = stm.executeQuery();
+            if (rs.next())
+                return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBHelp.closeDBResource(rs, stm, conn);
+        }
+        return false;
+    }
+
     public boolean registerWriteDB(User user) {
         Connection conn = DBHelp.getCon();
         String sql = "insert into User values(?,?,?,?)";

@@ -102,7 +102,7 @@
             <p>welcome <%= user.getUseName()%></p>
             <a href="/logout"><button type="button" class="btn btn-default">Logout</button></a>
             <%} else { %>
-            <a href="#">登录</a>|
+            <a href="./signin.jsp">登录</a>|
             <a href="./signup.jsp">注册</a><br/>
             <a href="./cart.jsp">
                 <img alt="" src="./image/cart.png"  >

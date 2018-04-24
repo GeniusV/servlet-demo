@@ -16,6 +16,11 @@ public class User {
         this.tel = tel;
     }
 
+    public User(String useName, String pwd) {
+        this.useName = useName;
+        this.pwd = pwd;
+    }
+
     public String getUseName() {
         return useName;
     }
