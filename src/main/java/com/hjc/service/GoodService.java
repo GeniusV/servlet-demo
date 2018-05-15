@@ -19,9 +19,11 @@ public class GoodService {
     public GoodService(Good good) {
         this.good = good;
     }
+
     public GoodService() {
 
     }
+
     public List<Good> getGoodList(int catagory) {
         ArrayList<Good> result = new ArrayList<>();
         Connection conn = DBHelp.getCon();

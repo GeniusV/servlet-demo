@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 public class GoodServiceTest {
 
     @Test
-    public void testGetGoodList(){
+    public void testGetGoodList() {
         GoodService service = new GoodService();
 
         List<Good> goods = service.getGoodList(2);

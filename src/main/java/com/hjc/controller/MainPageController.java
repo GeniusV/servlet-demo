@@ -11,7 +11,7 @@ import java.io.IOException;
  * Created by GeniusV on 5/15/18.
  */
 @WebServlet(name = "MainPageServlet", urlPatterns = "/mainpage")
-public class MainPageController extends HttpServlet{
+public class MainPageController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
