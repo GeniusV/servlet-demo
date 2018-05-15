@@ -7,8 +7,8 @@ public class DBHelp {
 
 	public static Connection getCon() {
 
-		String DBDirverName = "com.mysql.jdbc.Driver";
-		String DBUrl = "jdbc:mysql://localhost:3306/javaee";
+		String DBDirverName = "com.mysql.cj.jdbc.Driver";
+		String DBUrl = "jdbc:mysql://localhost:3306/javaee?useSSL=false";
 		String DBUser = "root";
 		String DBPwd = "123456";
 		Connection connection = null;
