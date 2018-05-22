@@ -8,13 +8,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by GeniusV on 4/17/18.
+ * Created by GeniusV on 5/15/18.
  */
-@WebServlet(name = "LogoutServlet", urlPatterns = "/logout")
-public class LogoutController extends HttpServlet {
+@WebServlet(name = "MainPageServlet", urlPatterns = "/mainpage")
+public class MainPageController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().removeAttribute("user");
-        resp.sendRedirect("index.jsp");
+        doPost(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("./mainPage.jsp").forward(req, resp);
     }
 }

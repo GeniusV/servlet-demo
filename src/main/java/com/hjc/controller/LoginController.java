@@ -15,7 +15,7 @@ import java.io.PrintWriter;
  * Created by GeniusV on 4/24/18.
  */
 @WebServlet(name = "LoginServlet", urlPatterns = "/signin")
-public class LoginController extends HttpServlet{
+public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
@@ -29,8 +29,7 @@ public class LoginController extends HttpServlet{
         if (usersService.checkUserValid(user)) {
             req.getSession().setAttribute("user", user);
             resp.sendRedirect("index.jsp");
-        }
-        else {
+        } else {
             resp.addHeader("refresh", "5;url=\"signup.jsp\"");
             resp.setCharacterEncoding("utf-8");
             resp.setContentType("text/html");
