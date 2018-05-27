@@ -26,7 +26,7 @@ public class LoginController extends HttpServlet {
 
         UsersService usersService = new UsersService();
 
-        if (usersService.checkUserValid(user)) {
+        if ((user = usersService.checkUserValid(user)) != null) {
             req.getSession().setAttribute("user", user);
             resp.sendRedirect("index.jsp");
         } else {

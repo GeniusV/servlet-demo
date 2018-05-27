@@ -1,8 +1,7 @@
-<%@ page import="com.hjc.entity.User" %>
-<%@ page import="org.xml.sax.ext.Attributes2Impl" %>
 <%@ page import="com.hjc.entity.Good" %>
+<%@ page import="com.hjc.entity.User" %>
 <%@ page import="java.util.List" %>
-<%@ page language="java" pageEncoding="utf-8" %>
+<%@ page pageEncoding="utf-8" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"
@@ -24,13 +23,13 @@
     <!--
 <link rel="stylesheet" type="text/css" href="styles.css">
 -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js" type="javascript"></script>
+    <script src="js/bootstrap.min.js" type="javascript"></script>
     <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
     <style type="text/css">
         div {
-        /*border: red solid 2px;*/
-        background: white;
+            /*border: red solid 2px;*/
+            background: white;
         }
 
         /*#head {*/
@@ -39,8 +38,8 @@
         /*}*/
 
         body {
-        text-align: center;
-        background: #e571b8
+            text-align: center;
+            background: #e571b8
         }
 
         /*#headleft {*/
@@ -100,15 +99,23 @@
         </div>
         <div id="headright" class="col-lg-4" style="margin-top: 30px">
 
-            <%if (session.getAttribute("user") != null) {
-            User user = (User) session.getAttribute("user");%>
-            <p>welcome <%= user.getUseName()%></p>
-            <a href="/logout"><button type="button" class="btn btn-default">Logout</button></a>
+            <%
+                if (session.getAttribute("user") != null) {
+                    User user = (User) session.getAttribute("user");
+            %>
+            <p>welcome <%= user.getUseName()%>
+            </p>
+            <a href="/logout">
+                <button type="button" class="btn btn-default">Logout</button>
+            </a>
+            <a href="/userInfo.jsp">
+                <button type="button" class="btn btn-default">Profile Setting</button>
+            </a>
             <%} else { %>
             <a href="./signin.jsp">登录</a>|
             <a href="./signup.jsp">注册</a><br/>
             <a href="./cart.jsp">
-                <img alt="" src="./image/cart.png"  >
+                <img alt="" src="./image/cart.png">
             </a>
             <%}%>
         </div>
@@ -136,7 +143,8 @@
                     <td colspan="2"><img src="<%=good.getImgPath()%>" alt=""></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><%=good.getInfo()%></td>
+                    <td colspan="2"><%=good.getInfo()%>
+                    </td>
                 </tr>
                 <tr>
                     <td><%=good.getPrice()%>RMB</td>
