@@ -1,4 +1,7 @@
 <%@ page import="com.hjc.entity.User" %>
+<%@ page import="org.xml.sax.ext.Attributes2Impl" %>
+<%@ page import="com.hjc.entity.Good" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" pageEncoding="utf-8" %>
 <%
     String path = request.getContextPath();
@@ -122,18 +125,21 @@
         </div>
     </div>
     <div id="main" class="clearfix">
-        <% for (int i = 0; i < 5; i++) {
+        <%
+            List<Good> goodList = (List<Good>) request.getAttribute("goodList");
+            for (Good good : goodList) {
+
         %>
-        <div style="float: left; padding: 30px; border: red solid 1px;">
+        <div style="float: left; padding: 30px; border: red solid 1px; width: 300px; height: 50%">
             <table>
                 <tr>
-                    <td colspan="2"><img src="./image/clothes/4.jpg" alt=""></td>
+                    <td colspan="2"><img src="<%=good.getImgPath()%>" alt=""></td>
                 </tr>
                 <tr>
-                    <td colspan="2">Intrduction</td>
+                    <td colspan="2"><%=good.getInfo()%></td>
                 </tr>
                 <tr>
-                    <td>900 RMB</td>
+                    <td><%=good.getPrice()%>RMB</td>
                     <td><a type="button" class="btn btn-primary">Buy</a></td>
                 </tr>
             </table>

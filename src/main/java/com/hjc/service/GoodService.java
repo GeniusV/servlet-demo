@@ -24,15 +24,22 @@ public class GoodService {
 
     }
 
-    public List<Good> getGoodList(int catagory) {
+    public List<Good> getGoodList(int category) {
         ArrayList<Good> result = new ArrayList<>();
         Connection conn = DBHelp.getCon();
-        String sql = "select * from goods where category=?";
         ResultSet rs = null;
         PreparedStatement stm = null;
+        String sql;
+        if (category > 0 && category < 4) {
+            sql = "select * from goods where categroy=?";
+        }else {
+            sql = "select * from goods";
+        }
         try {
             stm = conn.prepareStatement(sql);
-            stm.setInt(1, catagory);
+            if (category > 0 && category < 4) {
+                stm.setInt(1, category);
+            }
             rs = stm.executeQuery();
             while (rs.next()) {
                 result.add(new Good(
