@@ -16,9 +16,11 @@
 </head>
 <body>
 
+<a href="/index.jsp" style="display: block;"> <img alt="" src="./image/logo.PNG">
+</a>
 <div class="container">
     <%
-        if (request.getSession().getAttribute("success") != null ) {
+        if (request.getSession().getAttribute("success") != null) {
             request.getSession().removeAttribute("success");
     %>
     <div class="alert alert-success alert-dismissable" style="margin-top: 50px">
@@ -59,15 +61,13 @@
                 </div>
                 <button type="submit" class="btn btn-primary center-block">Update</button>
             </form>
-
-
         </div>
     </div>
 </div>
 <script>
-    window.setTimeout(function(){
+    window.setTimeout(function () {
         $('.alert').slideUp("normal");
-    },2000);
+    }, 2000);
 
     $(document).ready(function () {
         $('.close').onclick(function (ev) {
