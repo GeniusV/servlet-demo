@@ -112,8 +112,8 @@
 
     <div class="clearfix row center-block" style="width: 50%">
         <ul class="pager">
-            <li class="previous"><a href="#">&larr; Older</a></li>
-            <li class="next"><a href="#">Newer &rarr;</a></li>
+            <li id="previous" class="previous"><a>&larr; Older</a></li>
+            <li id="next" class="next"><a>Newer &rarr;</a></li>
         </ul>
     </div>
 </div>
@@ -126,14 +126,37 @@
         return null;
     };
 
+    var page = getUrlParam("page");
+    var cate = getUrlParam("category");
+
     $(document).ready(function () {
         var children = $("#cate-nav").children();
-        var cate = getUrlParam("category");
         if (cate == null || cate < 1 || cate > 3) {
             $(children[0]).addClass('active');
+            cate = 0;
         }else {
             $(children[cate]).addClass('active');
         }
+
+        //set page
+        if (page === null) {
+            page = 0
+        }else{
+            page = parseInt(page)
+        }
+
+        $('#previous').click(function () {
+            if (page - 1 >= 0) {
+                page--;
+            }
+            window.location.href = "/?category=" + cate + '&page=' + page;
+        });
+
+        $('#next').click(function () {
+            page++;
+            window.location.href = "/?category=" + cate + '&page=' + page;
+        })
+
     });
 </script>
 </body>

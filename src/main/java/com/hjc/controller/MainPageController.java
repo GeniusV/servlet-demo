@@ -21,11 +21,19 @@ public class MainPageController extends HttpServlet {
         List<Good> goodList;
         GoodService goodService = new GoodService();
         String categoryStr = req.getParameter("category");
+        String pageStr = req.getParameter("page");
+        int page;
+        if (pageStr == null) {
+            page = 0;
+        }else{
+            page = Integer.parseInt(pageStr);
+        }
+
         if (categoryStr == null) {
-            goodList = goodService.getGoodList(100);
+            goodList = goodService.getGoodList(100, page);
         } else {
             int category = Integer.parseInt(categoryStr);
-            goodList = goodService.getGoodList(category);
+            goodList = goodService.getGoodList(category, page);
         }
         req.setAttribute("goodList", goodList);
         req.getRequestDispatcher("./mainPage.jsp").forward(req, resp);
