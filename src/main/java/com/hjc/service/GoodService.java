@@ -24,14 +24,26 @@ public class GoodService {
 
     }
 
+    public Good getGood() {
+        return good;
+    }
+
+    public void setGood(Good good) {
+        this.good = good;
+    }
+
     public List<Good> getGoodList(int category) {
+        return getGoodList(category, 0, 100);
+    }
+
+    public List<Good> getGoodList(int category, int offset, int page) {
         ArrayList<Good> result = new ArrayList<>();
         Connection conn = DBHelp.getCon();
         ResultSet rs = null;
         PreparedStatement stm = null;
         String sql;
         if (category > 0 && category < 4) {
-            sql = "select * from goods where categroy=?";
+            sql = "select * from goods where category=? ORDER BY id limit ?,?";
         } else {
             sql = "select * from goods";
         }
@@ -39,6 +51,8 @@ public class GoodService {
             stm = conn.prepareStatement(sql);
             if (category > 0 && category < 4) {
                 stm.setInt(1, category);
+                stm.setInt(2, offset);
+                stm.setInt(3, page);
             }
             rs = stm.executeQuery();
             while (rs.next()) {
@@ -58,14 +72,5 @@ public class GoodService {
             DBHelp.closeDBResource(rs, stm, conn);
         }
         return result;
-    }
-
-
-    public Good getGood() {
-        return good;
-    }
-
-    public void setGood(Good good) {
-        this.good = good;
     }
 }
