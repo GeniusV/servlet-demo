@@ -32,11 +32,8 @@ public class GoodService {
         this.good = good;
     }
 
-    public List<Good> getGoodList(int category) {
-        return getGoodList(category, 0, 100);
-    }
 
-    public List<Good> getGoodList(int category, int offset, int page) {
+    public List<Good> getGoodList(int category) {
         ArrayList<Good> result = new ArrayList<>();
         Connection conn = DBHelp.getCon();
         ResultSet rs = null;

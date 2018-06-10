@@ -23,66 +23,21 @@
     <!--
 <link rel="stylesheet" type="text/css" href="styles.css">
 -->
-    <script src="js/jquery-3.2.1.min.js" type="javascript"></script>
-    <script src="js/bootstrap.min.js" type="javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
     <style type="text/css">
         div {
-            /*border: red solid 2px;*/
             background: white;
         }
-
-        /*#head {*/
-        /*width: 1000px;*/
-        /*height: 150px;*/
-        /*}*/
 
         body {
             text-align: center;
             background: #e571b8
         }
 
-        /*#headleft {*/
-        /*width: 30%;*/
-        /*float: left;*/
-        /*}*/
-
-        /*#headcenter {*/
-        /*width: 50%;*/
-        /*float: left;*/
-        /*position: relative;*/
-        /*top: 80px;*/
-        /*}*/
-
-        /*#headright {*/
-        /*float: right;*/
-        /*font-size: 20px;*/
-        /*border: red solid 1px;*/
-        /*}*/
-
-        /*#nav {*/
-        /*width: 1000px;*/
-        /*blackgroundcolor: white;*/
-        /*height: 50px;*/
-        /*}*/
-
-        /*ul {*/
-        /*list-style: none;*/
-        /*}*/
-
-        /*li {*/
-        /*display: inline;*/
-        /*width: 100px;*/
-        /*line-height: 40px;*/
-        /*}*/
-
-        /*#navRight {*/
-        /*width: 70%;*/
-        /*float: left;*/
-        /*}*/
-
-
     </style>
+
 </head>
 <body>
 
@@ -123,7 +78,7 @@
 
     <div id="nav" class="row">
         <div id="navRight" class="col-lg-4">
-            <ul class="nav nav-pills">
+            <ul class="nav nav-tabs" id="cate-nav">
                 <li><a href="${pageContext.request.contextPath}/">首页</a></li>
                 <li><a href="${pageContext.request.contextPath}/?category=1">食品</a></li>
                 <li><a href="${pageContext.request.contextPath}/?category=2">家电</a></li>
@@ -162,7 +117,24 @@
         </ul>
     </div>
 </div>
+<script>
 
+    var getUrlParam = function (name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    };
 
+    $(document).ready(function () {
+        var children = $("#cate-nav").children();
+        var cate = getUrlParam("category");
+        if (cate == null || cate < 1 || cate > 3) {
+            $(children[0]).addClass('active');
+        }else {
+            $(children[cate]).addClass('active');
+        }
+    });
+</script>
 </body>
 </html>
