@@ -18,8 +18,15 @@ import java.util.List;
 public class MainPageController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Good> goodList;
         GoodService goodService = new GoodService();
-        List<Good> goodList = goodService.getGoodList(100);
+        String categoryStr = req.getParameter("category");
+        if (categoryStr == null) {
+            goodList = goodService.getGoodList(100);
+        } else {
+            int category = Integer.parseInt(categoryStr);
+            goodList = goodService.getGoodList(category);
+        }
         req.setAttribute("goodList", goodList);
         req.getRequestDispatcher("./mainPage.jsp").forward(req, resp);
     }

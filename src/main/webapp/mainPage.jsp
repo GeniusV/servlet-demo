@@ -124,10 +124,10 @@
     <div id="nav" class="row">
         <div id="navRight" class="col-lg-4">
             <ul class="nav nav-pills">
-                <li><a>首页</a></li>
-                <li><a>热卖</a></li>
-                <li><a>推荐</a></li>
-                <li><a>聚划算</a></li>
+                <li><a href="${pageContext.request.contextPath}/">首页</a></li>
+                <li><a href="${pageContext.request.contextPath}/?category=1">食品</a></li>
+                <li><a href="${pageContext.request.contextPath}/?category=2">家电</a></li>
+                <li><a href="${pageContext.request.contextPath}/?category=3">书籍</a></li>
             </ul>
         </div>
     </div>
