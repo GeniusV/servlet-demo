@@ -32,7 +32,7 @@ public class GoodService {
         String sql;
         if (category > 0 && category < 4) {
             sql = "select * from goods where categroy=?";
-        }else {
+        } else {
             sql = "select * from goods";
         }
         try {
