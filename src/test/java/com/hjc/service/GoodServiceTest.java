@@ -20,7 +20,7 @@ public class GoodServiceTest {
     public void testGetGoodList() {
         GoodService service = new GoodService();
 
-        List<Good> goods = service.getGoodList(2, 0, 2);
+        List<Good> goods = service.getGoodList(0, 1);
 
         assertNotEquals(0, goods.size());
         System.out.println(goods);
@@ -30,5 +30,4 @@ public class GoodServiceTest {
         logger.warn("hhh");
 
     }
-
 }

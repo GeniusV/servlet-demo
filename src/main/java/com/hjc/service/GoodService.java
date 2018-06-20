@@ -32,28 +32,32 @@ public class GoodService {
         this.good = good;
     }
 
+
     public List<Good> getGoodList(int category) {
-        return getGoodList(category, 0, 100);
+        return getGoodList(category, 0);
     }
 
-    public List<Good> getGoodList(int category, int offset, int page) {
+
+    public List<Good> getGoodList(int category, int page) {
         ArrayList<Good> result = new ArrayList<>();
         Connection conn = DBHelp.getCon();
         ResultSet rs = null;
         PreparedStatement stm = null;
         String sql;
         if (category > 0 && category < 4) {
-            sql = "select * from goods where category=? ORDER BY id limit ?,?";
+            sql = "select * from goods where category=? Limit ?, 6";
         } else {
-            sql = "select * from goods";
+            sql = "select * from goods LIMIT ?, 6";
         }
         try {
             stm = conn.prepareStatement(sql);
             if (category > 0 && category < 4) {
                 stm.setInt(1, category);
-                stm.setInt(2, offset);
-                stm.setInt(3, page);
+                stm.setInt(2, page * 6);
+            } else {
+                stm.setInt(1, page * 6);
             }
+
             rs = stm.executeQuery();
             while (rs.next()) {
                 result.add(new Good(
