@@ -1,6 +1,6 @@
-package com.hjc.service;
+package com.geniusver.service;
 
-import com.hjc.entity.Good;
+import com.geniusver.entity.Good;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

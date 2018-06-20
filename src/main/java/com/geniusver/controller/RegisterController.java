@@ -1,7 +1,7 @@
-package com.hjc.controller;
+package com.geniusver.controller;
 
-import com.hjc.entity.User;
-import com.hjc.service.UsersService;
+import com.geniusver.entity.User;
+import com.geniusver.service.UsersService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -1,7 +1,7 @@
-package com.hjc.service;
+package com.geniusver.service;
 
-import com.hjc.entity.User;
-import com.hjc.util.DBHelp;
+import com.geniusver.entity.User;
+import com.geniusver.util.DBHelp;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

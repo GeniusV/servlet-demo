@@ -1,4 +1,4 @@
-<%@ page import="com.hjc.entity.User" %><%--
+<%@ page import="com.geniusver.entity.User" %><%--
   Created by IntelliJ IDEA.
   User: GeniusV
   Date: 5/15/18

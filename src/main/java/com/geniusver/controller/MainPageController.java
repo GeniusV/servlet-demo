@@ -1,7 +1,7 @@
-package com.hjc.controller;
+package com.geniusver.controller;
 
-import com.hjc.entity.Good;
-import com.hjc.service.GoodService;
+import com.geniusver.entity.Good;
+import com.geniusver.service.GoodService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

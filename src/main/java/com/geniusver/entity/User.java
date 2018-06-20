@@ -1,4 +1,4 @@
-package com.hjc.entity;
+package com.geniusver.entity;
 
 /**
  * Created by GeniusV on 4/3/18.

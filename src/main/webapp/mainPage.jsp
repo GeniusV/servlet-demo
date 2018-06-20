@@ -1,5 +1,5 @@
-<%@ page import="com.hjc.entity.Good" %>
-<%@ page import="com.hjc.entity.User" %>
+<%@ page import="com.geniusver.entity.Good" %>
+<%@ page import="com.geniusver.entity.User" %>
 <%@ page import="java.util.List" %>
 <%@ page pageEncoding="utf-8" %>
 <%

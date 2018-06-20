@@ -1,4 +1,4 @@
-package com.hjc.util;
+package com.geniusver.util;
 
 import java.sql.*;
 import java.util.ArrayList;
